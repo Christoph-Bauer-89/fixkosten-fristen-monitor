@@ -1,0 +1,17 @@
+﻿Dokument_ID;Dokumentenart;Vertragsgegenstand_Kategorie;Vertragspartner_Dienstleister;Rechnungs_oder_Startdatum;Ablauf_oder_Enddatum;Kuendigungsfrist_Monate;Spaetestes_Kuendigungsdatum;Zahlungsturnus;Betrag_EUR;Status;Notiz
+DEMO-001;Mietvertrag;Wohnen (Miete);Wohnbau Musterstadt eG;2022-04-01;;3;;Monatlich;1045,00;Aktiv;Demo: Warmmiete, unbefristet
+DEMO-002;Vertrag;Kinderbetreuung & Familie;Kita Sonnenschein e.V.;2025-08-01;2027-07-31;2;2027-05-31;Monatlich;185,00;Aktiv;Demo: Betreuungsvertrag
+DEMO-003;Rechnungsdokument;Energie (Strom);Stadtwerke Musterstadt;2025-03-01;2027-02-28;1;2027-01-31;Monatlich;92,00;Aktiv;Demo: Abschlag Strom
+DEMO-004;Rechnungsdokument;Energie (Gas);Gasversorgung Muster GmbH;2025-01-01;2026-12-31;1;2026-11-30;Monatlich;68,00;Aktiv;Demo: Abschlag Gas
+DEMO-005;Police;Versicherung (Kfz);Muster Kfz-Versicherung AG;2026-01-01;2026-12-31;1;2026-11-30;Jährlich;570,00;Aktiv;Demo: Kfz-Haftpflicht + Teilkasko
+DEMO-006;Police;Versicherung (Haftpflicht);Beispiel Versicherung AG;2024-06-01;2027-05-31;3;2027-02-28;Jährlich;76,80;Aktiv;Demo: Familienhaftpflicht
+DEMO-007;Police;Versicherung (Hausrat);Beispiel Versicherung AG;2024-02-01;2027-01-31;3;2026-10-31;Jährlich;110,40;Aktiv;Demo: Hausrat
+DEMO-008;Police;Versicherung (Rechtsschutz);Recht & Schutz Versicherung AG;2023-09-01;2026-08-31;3;2026-05-31;Jährlich;298,80;Aktiv;Demo: Rechtsschutz, Frist verstrichen -> rolliert
+DEMO-009;Police;Versicherung (Reise);Reiseschutz Muster AG;2026-01-15;2027-01-14;1;2026-12-14;Jährlich;37,20;Aktiv;Demo: Auslandsreisekranken
+DEMO-010;Vertrag;Telekommunikation (Mobilfunk);Mobilfunk Beispiel GmbH;2024-12-10;2026-12-09;1;2026-11-09;Monatlich;19,99;Aktiv;Demo: Mobilfunk 24 Monate
+DEMO-011;Vertrag;Telekommunikation (Internet);Netz & Draht GmbH;2025-04-01;2027-03-31;1;2027-02-28;Monatlich;39,99;Aktiv;Demo: DSL 100
+DEMO-012;Abo-Bestätigung;Software & Abos;StreamPlus;2025-12-05;2026-12-04;0;2026-12-04;Monatlich;12,99;Aktiv;Demo: Streaming
+DEMO-013;Abo-Bestätigung;Software & Abos;CloudBox;2026-03-01;2027-02-28;1;2027-01-31;Jährlich;99,00;Aktiv;Demo: Cloud-Speicher
+DEMO-014;Bescheid;Öffentliche Abgaben;Stadt Musterstadt;2026-01-01;;;;Quartalsweise;64,20;Aktiv;Demo: Grundbesitzabgaben
+DEMO-015;Bescheid;Öffentliche Abgaben;Beitragsservice (Demo);2026-01-01;;;;Jährlich;220,32;Aktiv;Demo: Rundfunkbeitrag
+DEMO-016;Mitgliedsantrag;Mitgliedschaften & Vereine;SV Musterdorf e.V.;2023-01-01;2026-12-31;1;2026-11-30;Jährlich;90,00;Aktiv;Demo: Sportverein

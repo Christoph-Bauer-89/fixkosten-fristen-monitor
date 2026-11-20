@@ -1,0 +1,70 @@
+// DAX für die Tabelle 'contracts_master'
+// Betrag_EUR = Betrag pro Zahlungsturnus (bei jährlicher Zahlung der Jahresbetrag).
+
+// =====================================================================
+// MEASURES
+// =====================================================================
+
+// Anzahl der aktiven Verträge
+Aktive Vertraege =
+CALCULATE(
+    COUNT('contracts_master'[Dokument_ID]),
+    'contracts_master'[Status] = "Aktiv"
+)
+
+// Fixkosten pro Monat über alle aktiven Verträge, normiert nach Zahlungsturnus
+Monatliche Gesamtkosten =
+SUMX(
+    FILTER('contracts_master', 'contracts_master'[Status] = "Aktiv"),
+    SWITCH(
+        'contracts_master'[Zahlungsturnus],
+        "Monatlich", 'contracts_master'[Betrag_EUR],
+        "Jährlich", 'contracts_master'[Betrag_EUR] / 12,
+        "Quartalsweise", 'contracts_master'[Betrag_EUR] / 3,
+        0
+    )
+)
+
+// Tage bis zur nächsten Kündigungsfrist im aktuellen Filterkontext
+Tage bis Kuendigung =
+VAR NaechsteFrist = MIN('contracts_master'[Spaetestes_Kuendigungsdatum])
+RETURN
+IF(
+    ISBLANK(NaechsteFrist),
+    BLANK(),
+    DATEDIFF(TODAY(), NaechsteFrist, DAY)
+)
+
+// =====================================================================
+// BERECHNETE SPALTEN (Zeilenkontext)
+// =====================================================================
+
+// Monatsanteil je Vertrag
+Monatlicher_Betrag =
+SWITCH(
+    'contracts_master'[Zahlungsturnus],
+    "Monatlich", 'contracts_master'[Betrag_EUR],
+    "Quartalsweise", 'contracts_master'[Betrag_EUR] / 3,
+    "Jährlich", 'contracts_master'[Betrag_EUR] / 12,
+    'contracts_master'[Betrag_EUR]
+)
+
+// Ampel auf Basis des rollierenden Kündigungsdatums aus Power Query
+Fristen_Ampel_Status =
+VAR HeutigesDatum = TODAY()
+VAR FristDatum = 'contracts_master'[Rollierendes_Kuendigungsdatum]
+VAR RestTage = INT(FristDatum - HeutigesDatum)
+RETURN
+IF(
+    ISBLANK(FristDatum),
+    "🟢 Flexibel / Keine Frist",
+    IF(
+        RestTage <= 30,
+        "🔴 Kritisch (< 30 Tage)",
+        IF(
+            RestTage <= 60,
+            "🟡 Warnung (< 60 Tage)",
+            "🟢 Sicher (> 60 Tage)"
+        )
+    )
+)
